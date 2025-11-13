@@ -1,0 +1,1 @@
+Para executar o hempora utilize python app.py

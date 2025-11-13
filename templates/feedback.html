@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hêmpora - Feedback dos Usuários</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>Hêmpora</h1>
+      <p class="subtitulo">Rede de Suporte e Aprendizagem sobre o Uso Medicinal do Cânhamo</p>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href='/cadastro'>Cadastro de Usuário</a></li>
+        <li><a href='/chat'>Chat</a></li>
+        <li><a href='/feedback' class="ativo">Feedback</a></li>
+        <li><a href='/'>Início</a></li>
+        <li><a href='/material_didatico'>Material Didático</a></li>
+        <li><a href='/processo_legal'>Processo Legal</a></li>
+        <li><a href='/sobre_o_projeto'>Sobre o Projeto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Feedback dos Usuários</h1>
+    <p>Seu feedback é muito importante para melhorar nosso projeto. Por favor, preencha o formulário abaixo.</p>
+    <form action='/enviar_feedback' method="post">
+      <label for="Nome">Nome:</label>
+      <input type="text" id="id_usuario" name="id_usuario" placeholder="Opcional" />
+
+      <label for="tipo">Tipo de Feedback:</label>
+      <select id="tipo" name="tipo" required>
+        <option value="">Selecione</option>
+        <option value="elogio">Elogio</option>
+        <option value="sugestao">Sugestão</option>
+        <option value="critica">Crítica</option>
+        <option value="relato_de_uso">Relato de Uso</option>
+      </select>
+
+      <label for="descricao">Descrição:</label>
+      <input type="text" id="descricao" name="descricao" placeholder="Opcional" />
+
+      <button type="submit">Enviar Feedback</button>
+    </form>
+
+    {% if mensagem %}
+      <p class="msg-sucesso">{{ mensagem }}</p>
+    {% elif erro %}
+      <p class="msg-erro">{{ erro }}</p>
+    {% endif %}
+  </main>
+
+  <footer>
+    <p>© 2025 Hêmpora — Projeto Educacional | Desenvolvido por Estudantes do CEEP Maringá</p>
+  </footer>
+</body>
+</html>
